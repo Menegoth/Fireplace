@@ -36,9 +36,19 @@ namespace Fireplace {
             return time;
         }
 
+        //get label
+        public System.Windows.Controls.Label GetLabel() {
+            return displayLabel;
+        }
+
         //set label
         public void SetDisplayLabel(System.Windows.Controls.Label displayLabel) {
             this.displayLabel = displayLabel;
+        }
+
+        //get canvas
+        public System.Windows.Controls.Canvas GetCanvas() {
+            return backgroundCanvas;
         }
 
         //set canvas
@@ -46,7 +56,7 @@ namespace Fireplace {
             this.backgroundCanvas = backgroundCanvas;
         }
 
-        public void UpdateLabel() {
+        private void UpdateLabel() {
             displayLabel.Content = time.ToString();
         }
 
@@ -59,6 +69,7 @@ namespace Fireplace {
             UpdateLabel(); //display original time on label
             countdownTimer.Tick += new EventHandler(countdownTimer_Tick);
             ChangeBackground(orangeColor); //change to orange
+            StartTimer();
 
         }
 
@@ -70,15 +81,20 @@ namespace Fireplace {
             
             //check if 0
             if (time == 0) {
-                countdownTimer.Stop();
+                StopTimer();
                 ChangeBackground(blackColor); //change to black
             }
 
         }
 
         //start the timer
-        public void startTimer() {
+        private void StartTimer() {
             countdownTimer.Start();
+        }
+
+        //stop timer
+        private void StopTimer() {
+            countdownTimer.Stop();
         }
 
         /// <summary>
@@ -89,7 +105,7 @@ namespace Fireplace {
 
             //restart timer if ran out
             if (time == 0) {
-                countdownTimer.Start();
+                StartTimer();
                 ChangeBackground(orangeColor); //change back to orange
             }
 
@@ -100,7 +116,7 @@ namespace Fireplace {
         }
 
         //change canvas background
-        public void ChangeBackground(SolidColorBrush color) {
+        private void ChangeBackground(SolidColorBrush color) {
             backgroundCanvas.Background = color;
         }
 

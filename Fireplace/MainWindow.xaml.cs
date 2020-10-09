@@ -34,7 +34,6 @@ namespace Fireplace {
             countdown.SetDisplayLabel(timeLabel);
             countdown.SetBackgroundCanvas(backgroundCanvas);
             countdown.InitializeTimer();
-            countdown.startTimer();
 
             //initialize wood
             wood.SetDisplayLabel(woodLabel);
