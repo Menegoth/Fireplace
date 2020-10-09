@@ -46,15 +46,19 @@ namespace Fireplace {
             this.backgroundCanvas = backgroundCanvas;
         }
 
+        public void UpdateLabel() {
+            displayLabel.Content = time.ToString();
+        }
+
         /// <summary>
         /// Initialize timer
         /// </summary>
         public void InitializeTimer() {
 
             countdownTimer.Interval = 1000; //one second
-            displayLabel.Content = time.ToString(); //display original time on label
+            UpdateLabel(); //display original time on label
             countdownTimer.Tick += new EventHandler(countdownTimer_Tick);
-            ChangeBackground(orangeColor);
+            ChangeBackground(orangeColor); //change to orange
 
         }
 
@@ -62,12 +66,12 @@ namespace Fireplace {
 
             //update time
             time--;
-            displayLabel.Content = time.ToString();
+            UpdateLabel();
             
             //check if 0
             if (time == 0) {
                 countdownTimer.Stop();
-                ChangeBackground(blackColor);
+                ChangeBackground(blackColor); //change to black
             }
 
         }
@@ -86,13 +90,13 @@ namespace Fireplace {
             //restart timer if ran out
             if (time == 0) {
                 countdownTimer.Start();
-                ChangeBackground(orangeColor);
+                ChangeBackground(orangeColor); //change back to orange
             }
 
             time += amount;
 
             //display new amount
-            displayLabel.Content = time.ToString();
+            UpdateLabel();
         }
 
         //change canvas background
