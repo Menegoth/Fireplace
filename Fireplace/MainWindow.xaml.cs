@@ -29,8 +29,6 @@ namespace Fireplace {
         public MainWindow() {
             InitializeComponent();
 
-            //set background to orange
-
 
             //intialize timer
             countdown.SetDisplayLabel(timeLabel);

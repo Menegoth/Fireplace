@@ -95,6 +95,7 @@ namespace Fireplace {
             displayLabel.Content = time.ToString();
         }
 
+        //change canvas background
         public void ChangeBackground(SolidColorBrush color) {
             backgroundCanvas.Background = color;
         }
